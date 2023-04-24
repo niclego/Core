@@ -1,4 +1,6 @@
-public struct ISOLatestRequest: Requestable {    
+public struct ISOLatestRequest: Requestable {
+    public typealias ISOLatestRequestType = () async throws -> [ISO]
+
     public init() {}
 
     public let httpMethod = NetworkManager.HttpMethod.get.method
