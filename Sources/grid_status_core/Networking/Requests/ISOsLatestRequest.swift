@@ -1,7 +1,5 @@
-public struct ISOLatestRequest: Requestable {
-    public static let factory = Self.init()
-    
-    private init() {}
+public struct ISOLatestRequest: Requestable {    
+    public init() {}
 
     public let httpMethod = NetworkManager.HttpMethod.get.method
     public let domain = "https://api.gridstatus.io"
