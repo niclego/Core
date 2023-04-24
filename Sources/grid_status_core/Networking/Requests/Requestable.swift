@@ -1,4 +1,4 @@
-protocol Requestable {
+public protocol Requestable {
     var httpMethod: String { get }
     var domain: String { get }
     var path: String { get }

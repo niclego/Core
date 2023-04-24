@@ -1,10 +1,10 @@
-struct ISOLatestRequest: Requestable {
-    static let factory = Self.init()
+public struct ISOLatestRequest: Requestable {
+    public static let factory = Self.init()
     
     private init() {}
 
-    let httpMethod = NetworkManager.HttpMethod.get.method
-    let domain = "https://api.gridstatus.io"
-    let path = "/query/isos_latest"
-    let queryItems = [String: String]()
+    public let httpMethod = NetworkManager.HttpMethod.get.method
+    public let domain = "https://api.gridstatus.io"
+    public let path = "/query/isos_latest"
+    public let queryItems = [String: String]()
 }

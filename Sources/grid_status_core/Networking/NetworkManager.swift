@@ -1,17 +1,17 @@
 import Foundation
 
-protocol NetworkManagable {
+public protocol NetworkManagable {
     func request<T: Decodable>(request: Requestable) async throws -> T
 }
 
-struct NetworkManagerMock: NetworkManagable {
-    func request<T>(request: Requestable) async throws -> T where T : Decodable {
+public struct NetworkManagerMock: NetworkManagable {
+    public func request<T>(request: Requestable) async throws -> T where T : Decodable {
         print("Mock request completed")
         return ISOLatestResponse.example as! T
     }
 }
 
-struct NetworkManager: NetworkManagable {
+public struct NetworkManager: NetworkManagable {
     let apiKey: String
     let session = URLSession.shared
     
@@ -24,7 +24,7 @@ struct NetworkManager: NetworkManagable {
         var method: String { rawValue.uppercased() }
     }
 
-    func request<T: Decodable>(
+    public func request<T: Decodable>(
         request: Requestable
     ) async throws -> T {
         guard var urlComponents = URLComponents(string: request.domain + request.path) else { throw NetworkError.invalidRequestURL }
