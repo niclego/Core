@@ -1,4 +1,4 @@
-public struct ISOLatestRequest: Requestable {
+public struct GetISOsLatestRequest: Requestable {
     public typealias Action = () async throws -> [ISO]
 
     public init() {}
