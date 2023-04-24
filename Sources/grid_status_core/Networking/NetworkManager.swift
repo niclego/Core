@@ -4,14 +4,6 @@ public protocol NetworkManagable {
     func request<T: Decodable>(request: Requestable) async throws -> T
 }
 
-public struct NetworkManagerMock: NetworkManagable {
-    public init() {}
-    public func request<T>(request: Requestable) async throws -> T where T : Decodable {
-        print("Mock request completed")
-        return ISOLatestResponse.example as! T
-    }
-}
-
 public struct NetworkManager: NetworkManagable {
     let apiKey: String
     let session = URLSession.shared

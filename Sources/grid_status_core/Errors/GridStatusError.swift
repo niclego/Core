@@ -1,4 +1,4 @@
-enum GridStatusError: Error {
+public enum GridStatusError: Error {
     case noIsosData
     
     enum NetworkError: Error {
