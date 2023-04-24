@@ -14,7 +14,7 @@ public protocol CoreProtocol {
 public struct Core: CoreProtocol {
     let networkManager: NetworkManagable
 
-    init(
+    public init(
         networkManager: NetworkManagable
     ) {
         self.networkManager = networkManager
