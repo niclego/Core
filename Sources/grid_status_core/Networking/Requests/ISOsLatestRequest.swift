@@ -1,5 +1,5 @@
 public struct GetISOsLatestRequest: Requestable {
-    public typealias Action = () async throws -> [ISO]
+    public typealias Action = () async throws -> [ISOLatestResponse]
 
     public init() {}
 
