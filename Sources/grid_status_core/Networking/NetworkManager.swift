@@ -5,6 +5,7 @@ public protocol NetworkManagable {
 }
 
 public struct NetworkManagerMock: NetworkManagable {
+    public init() {}
     public func request<T>(request: Requestable) async throws -> T where T : Decodable {
         print("Mock request completed")
         return ISOLatestResponse.example as! T
@@ -16,12 +17,16 @@ public struct NetworkManager: NetworkManagable {
     let session = URLSession.shared
     
     typealias NetworkError = GridStatusError.NetworkError
-
+    
     enum HttpMethod: String {
         case get
         case post
 
         var method: String { rawValue.uppercased() }
+    }
+    
+    public init(apiKey: String) {
+        self.apiKey = apiKey
     }
 
     public func request<T: Decodable>(
