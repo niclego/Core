@@ -1,15 +1,15 @@
 import Foundation
 
-struct ISO: Decodable {
-    let iso: String
-    let latestLmp: Double
-    let latestLmpLocation: String
-    let latestLmpMarket: String
-    let latestLoad: Double
-    let latestPrimaryPowerSource: String
-    let lmpTimeUtc: String
-    let loadTimeUtc: String
-    let primaryPowerSourceTimeUtc: String
+public struct ISO: Decodable {
+    public let iso: String
+    public let latestLmp: Double
+    public let latestLmpLocation: String
+    public let latestLmpMarket: String
+    public let latestLoad: Double
+    public let latestPrimaryPowerSource: String
+    public let lmpTimeUtc: String
+    public let loadTimeUtc: String
+    public let primaryPowerSourceTimeUtc: String
     
     enum CodingKeys: String, CodingKey {
         case iso
@@ -23,7 +23,7 @@ struct ISO: Decodable {
         case primaryPowerSourceTimeUtc = "primary_power_source_time_utc"
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.iso = try container.decode(String.self, forKey: .iso)
         self.latestLmp = try container.decode(Double.self, forKey: .latestLmp)
@@ -37,8 +37,8 @@ struct ISO: Decodable {
     }
 }
 
-struct ISOLatestResponse: Decodable {
-    let data: [ISO]
+public struct ISOLatestResponse: Decodable {
+    public let data: [ISO]
     let statusCode: Int
     
     enum CodingKeys: String, CodingKey {
