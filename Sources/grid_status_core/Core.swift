@@ -2,7 +2,7 @@ import Combine
 
 public protocol CoreProtocol {
     func requestGenerator <T: Decodable>(
-        request: Requestable
+        request: any Requestable
     ) -> () async throws -> T
     
     func streamGenerator<T>(
@@ -21,7 +21,7 @@ public struct Core: CoreProtocol {
     }
     
     public func requestGenerator<T: Decodable>(
-        request: Requestable
+        request: any Requestable
     ) -> () async throws -> T {
         return {
             let response: T = try await networkManager.request(request: request)

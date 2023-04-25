@@ -48,7 +48,7 @@ public struct ISOLatestResponse: Decodable {
 }
 
 extension ISOLatestResponse {
-    static let example: ISOLatestResponse = {
+    public static let example: ISOLatestResponse = {
         if let path = Bundle.main.path(forResource: "isos_latest_query_response", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)

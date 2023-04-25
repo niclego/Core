@@ -1,7 +1,9 @@
 public struct GetISOsLatestRequest: Requestable {
-    public typealias Action = () async throws -> ISOLatestResponse
-
     public init() {}
+
+    public var responseMock: ISOLatestResponse {
+        ISOLatestResponse.example
+    }
 
     public let httpMethod = NetworkManager.HttpMethod.get.method
     public let domain = "https://api.gridstatus.io"

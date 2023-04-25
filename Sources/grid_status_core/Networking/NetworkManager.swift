@@ -1,14 +1,14 @@
 import Foundation
 
 public protocol NetworkManagable {
-    func request<T: Decodable>(request: Requestable) async throws -> T
+    func request<T: Decodable>(request: any Requestable) async throws -> T
 }
 
 public struct NetworkManagerMock: NetworkManagable {
     public init() {}
-    public func request<T>(request: Requestable) async throws -> T where T : Decodable {
+    public func request<T>(request: any Requestable) async throws -> T where T : Decodable {
         print("Mock request completed")
-        return ISOLatestResponse.example as! T
+        return request.responseMock as! T
     }
 }
 
@@ -30,7 +30,7 @@ public struct NetworkManager: NetworkManagable {
     }
 
     public func request<T: Decodable>(
-        request: Requestable
+        request: any Requestable
     ) async throws -> T {
         guard var urlComponents = URLComponents(string: request.domain + request.path) else { throw NetworkError.invalidRequestURL }
         
