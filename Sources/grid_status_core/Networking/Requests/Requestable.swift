@@ -9,5 +9,5 @@ public protocol Requestable {
 }
 
 extension Requestable {
-    typealias Action = () async throws -> ResponseType
+    public typealias Action = () async throws -> ResponseType
 }
