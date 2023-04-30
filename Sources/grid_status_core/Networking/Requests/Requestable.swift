@@ -7,7 +7,3 @@ public protocol Requestable {
     var path: String { get }
     var queryItems: [String: String] { get }
 }
-
-extension Requestable {
-    public typealias Action = () async throws -> ResponseType
-}
