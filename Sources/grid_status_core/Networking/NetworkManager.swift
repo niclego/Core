@@ -22,7 +22,7 @@ public struct NetworkManager: NetworkManagable {
         case get
         case post
 
-        var method: String { rawValue.uppercased() }
+        public var method: String { rawValue.uppercased() }
     }
     
     public init(apiKey: String) {
