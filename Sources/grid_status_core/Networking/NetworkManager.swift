@@ -18,7 +18,7 @@ public struct NetworkManager: NetworkManagable {
     
     typealias NetworkError = GridStatusError.NetworkError
     
-    enum HttpMethod: String {
+    public enum HttpMethod: String {
         case get
         case post
 
