@@ -15,9 +15,7 @@ public struct NetworkManagerMock: NetworkManagable {
 public struct NetworkManager: NetworkManagable {
     let apiKey: String
     let session = URLSession.shared
-    
-    typealias NetworkError = GridStatusError.NetworkError
-    
+        
     public enum HttpMethod: String {
         case get
         case post
