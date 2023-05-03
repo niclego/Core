@@ -1,5 +1,4 @@
 import XCTest
-@testable import grid_status_core
 
 final class grid_status_coreTests: XCTestCase {
     func testExample() throws {
