@@ -24,20 +24,13 @@ public struct NetworkManager: NetworkManagable {
 
         public var method: String { rawValue.uppercased() }
     }
-    
-    public init(apiKey: String) {
-        self.apiKey = apiKey
-    }
 
     public func request<T: Decodable>(
         request: any Requestable
     ) async throws -> T {
         guard var urlComponents = URLComponents(string: request.domain + request.path) else { throw NetworkError.invalidRequestURL }
-        
-        var queryItems = request.queryItems
-        queryItems["api_key"] = apiKey
 
-        urlComponents.queryItems = queryItems.map {
+        urlComponents.queryItems = request.queryItems.map {
             URLQueryItem(name: $0.0, value: $0.1)
         }
 
