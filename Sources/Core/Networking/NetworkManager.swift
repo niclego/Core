@@ -13,8 +13,9 @@ public struct NetworkManagerMock: NetworkManagable {
 }
 
 public struct NetworkManager: NetworkManagable {
-    let apiKey: String
     let session = URLSession.shared
+    
+    public init() {}
         
     public enum HttpMethod: String {
         case get
