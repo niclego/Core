@@ -7,7 +7,7 @@ public protocol NetworkManagable {
 public struct NetworkManagerMock: NetworkManagable {
     public init() {}
     public func request<T>(request: any Requestable) async throws -> T where T : Decodable {
-        print("Mock request completed")
+        print("Mock request completed for : \(request.path)")
         return request.responseMock as! T
     }
 }
@@ -35,11 +35,12 @@ public struct NetworkManager: NetworkManagable {
 
         guard let url = urlComponents.url else { throw NetworkError.invalidQueryItems }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = request.httpMethod
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = request.httpMethod
 
-        let ( data, response ) = try await session.data(for: request)
-        
+        let ( data, response ) = try await session.data(for: urlRequest)
+        print("Live Request completed for : \(request.path)")
+
         guard let urlResponse = response as? HTTPURLResponse else { throw NetworkError.invalidResponse }
 
         guard urlResponse.statusCode == 200 else { throw NetworkError.invalidStatusCode(urlResponse.statusCode) }
